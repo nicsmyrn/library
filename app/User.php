@@ -118,8 +118,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
                 ->select([
                     'notifications.text',
                     'notifications.url',
-                    'notifications.red',
-                    'notifications.created_on'
+                    'notifications.unread',
+                    'notifications.created_on',
+                    'notifications.barcode'
                 ])
                 ->get();
             return $query;

@@ -84,20 +84,24 @@ DB::beginTransaction();
     return 'done';
 });
 
-Route::get('temp', function(){ return view('admin.users.temp');});
-Route::get('broadcast2', function(){
-//    event(new BookHasCreated('This is the new notification', time(), 'http://www.google.gr', Auth::user()->hash));
-    event(new BookHasCreated(
-        'Δημιουργία βιβλίου',
-        Carbon::now()->format('d-m-Y'),
-        'http://library.gr/cPanel/products/6988045D0D/edit',
-        Auth::user()->myAdministratorHash()
-    ));
-    return 'done';
-});
+//Route::get('temp', function(){ return view('admin.users.temp');});
+//Route::get('broadcast2', function(){
+////    event(new BookHasCreated('This is the new notification', time(), 'http://www.google.gr', Auth::user()->hash));
+//    event(new BookHasCreated(
+//        'Δημιουργία βιβλίου',
+//        Carbon::now()->format('d-m-Y'),
+//        'http://library.gr/cPanel/products/6988045D0D/edit',
+//        Auth::user()->myAdministratorHash()
+//    ));
+//    return 'done';
+//});
 
 Route::get('notifications', function(){
     return Auth::user()->adminNotifications();
+});
+
+Route::get('notification/makeRead/{barcode}', function($barcode){  // ΕΧΩ ΑΜΦΙΒΟΛΙΑ ΓΙΑ ΤΟ GET OR POST
+    Notification::where('barcode', $barcode)->delete();
 });
 
 //Route::get('products/unpublished', ['middleware'=> 'acl:show_my_unpublished','uses'=> 'BooksController@unpublished']);

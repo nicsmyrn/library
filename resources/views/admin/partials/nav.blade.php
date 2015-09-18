@@ -149,7 +149,7 @@
                         <span v-if="notify.length" class="badge"> @{{ notify.length }}</span>
                     </a>
                     <ul class="dropdown-menu dropdown-alerts">
-                            <li v-repeat="notify">
+                            <li v-repeat="notify" v-on="click: isUnread(unread, barcode)" v-class="unread: unread">
                                 <a href="@{{ url }}">
                                     <div>
                                         <i class="fa fa-comment fa-fw"></i> @{{ text }}
@@ -158,15 +158,18 @@
                                 </a>
 
                             </li>
-
-
-                        <li class="divider"></li>
-                        <li>
-                            <a class="text-center" href="#">
-                                <strong>See All Alerts</strong>
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-                        </li>
+                            <li v-if="!notify">
+                                <p class="text-center">
+                                    <strong>Δεν υπάρχουν ειδοποιήσεις</strong>
+                                </p>
+                            </li>
+                        {{--<li class="divider"></li>--}}
+                        {{--<li>--}}
+                            {{--<a class="text-center" href="#">--}}
+                                {{--<strong>See All Alerts</strong>--}}
+                                {{--<i class="fa fa-angle-right"></i>--}}
+                            {{--</a>--}}
+                        {{--</li>--}}
                     </ul>
                     <!-- /.dropdown-alerts -->
                 </li>

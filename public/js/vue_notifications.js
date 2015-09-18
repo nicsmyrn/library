@@ -27,13 +27,19 @@ new Vue({
         },
         sendNotification: function (data) {
             if (this.notify){
-                this.notify.push({text: data['text'], created_on: data['time'], url: data['url'], red: 1})
+                this.notify.push({text: data['text'], created_on: data['time'], url: data['url'], unread: data['unread'], barcode : data['barcode']})
             }else{
-                this.$set('notify', [{text: data['text'], created_on: data['time'], url: data['url'], red: 1}]);
+                this.$set('notify', [{text: data['text'], created_on: data['time'], url: data['url'], unread: data['unread'], barcode : data['barcode']}]);
             }
         },
         addUser: function (data) {
             this.users.push(data['users'][0]);
+        },
+
+        isUnread: function (unread, barcode){
+            unread = !unread;
+            this.$http.get('http://library.gr/notification/makeRead/'+barcode);
         }
+
     }
 });
