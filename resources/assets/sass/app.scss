@@ -1,0 +1,33 @@
+@import 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
+
+.toggle.ios, .toggle-on.ios, .toggle-off.ios { border-radius: 20px; }
+.toggle.ios .toggle-handle { border-radius: 20px; }
+
+
+@import 'partials/colors';
+@import 'partials/headings';
+
+img{
+  max-width: 100%;
+}
+
+.flash-box{
+  background: #F6624A;
+  color: white;
+  width: 200px;
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  padding: 1em;
+  display: none;
+}
+
+#users a {
+  font-weight: normal;
+  color : blue;
+}
+
+#users a.active {
+  font-weight: bold;
+  color : #000000;
+}
