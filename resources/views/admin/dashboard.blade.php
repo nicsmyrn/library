@@ -13,6 +13,19 @@
     <link href="/css/all.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/app.css">
     <link href="/css/dashboard.css" rel="stylesheet">
+
+    <link href="//cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css" rel="stylesheet">
+
+    <style>
+        div.test {
+            float: left;
+            margin-left: 10px;
+        }
+        div.test button{
+            margin-left: 5px;
+            margin-top: 0px;
+        }
+    </style>
 </head>
 
 <body>
@@ -32,7 +45,7 @@
     </div>
 
     <script src="{!! url('js/all.js') !!}"></script>
-    <script src="    {!! url('js/dashboard.js') !!}"></script>
+{{--    <script src="    {!! url('js/dashboard.js') !!}"></script>--}}
 
      <script src="https://js.pusher.com/2.2/pusher.min.js"></script>
      <script src="{!! url('js/vendor.js') !!}"></script>

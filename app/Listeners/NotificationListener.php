@@ -34,6 +34,7 @@ class NotificationListener
             'text' => $event->text,
             'url' => $event->url,
             'created_on' => Carbon::now(),
+            'unread' => $event->unread,
             'barcode' => $event->barcode
         ]);
     }

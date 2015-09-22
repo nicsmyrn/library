@@ -14,7 +14,7 @@ class Notification extends Model
         'user_id',
         'text',
         'url',
-        'red',
+        'unread',
         'barcode',
         'created_on'
     ];

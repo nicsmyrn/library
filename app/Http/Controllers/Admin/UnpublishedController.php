@@ -23,8 +23,27 @@ class UnpublishedController extends Controller
 
     public function allUnpublished()
     {
-        $products =  $this->repo->index();
+        $products =  $this->repo->index($this->user);
         return view('admin.products.unpublished.all', compact('products'));
+    }
+
+    public function postUnpublished(Request $request)
+    {
+        $action = $request->get('action');
+        $ids = $request->get('id');
+
+        if ($action == 'delete'){
+            foreach($ids as $id){
+                $this->deleteProduct(Product::find($id));
+            }
+            flash()->success('Διεγράφη', 'Το προϊόν Διεγράφη με επιτυχία');
+        }elseif($action == 'publish'){
+            foreach($ids as $id){
+                $this->publishProduct(Product::find($id));
+            }
+            flash()->success('Δημοσιεύθη', 'Το προϊόν δημοσιεύθηκε  με επιτυχία');
+        }
+        return redirect()->back();
     }
 
     public function confirmUnpublished(Product $product)

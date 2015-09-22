@@ -97,7 +97,8 @@ DB::beginTransaction();
 //});
 
 Route::get('notifications', function(){
-    return Auth::user()->adminNotifications();
+    $notifications =  Auth::user()->adminNotifications();
+    return $notifications;
 });
 
 Route::get('notification/makeRead/{barcode}', function($barcode){  // ΕΧΩ ΑΜΦΙΒΟΛΙΑ ΓΙΑ ΤΟ GET OR POST
@@ -118,6 +119,7 @@ Route::group(['prefix'=> 'cPanel', 'as'=> 'Admin::'], function(){
 
     Route::group(['prefix'=>'unpublished', 'as'=>'Unpublished::'],function(){
         Route::get('/', ['as'=>'index', 'uses'=>'Admin\UnpublishedController@allUnpublished']);
+        Route::post('/', ['as' =>'index.post', 'uses' =>'Admin\UnpublishedController@postUnpublished']);
         Route::get('{unpublished}/confirm', ['as'=>'confirmUnpublished','uses'=>'Admin\UnpublishedController@confirmUnpublished']);
         Route::get('{unpublished}/delete', ['as'=>'delUnProduct','uses'=>'Admin\UnpublishedController@deleteProduct']);
         Route::get('{unpublished}/publish',['as'=>'publishUnProduct','uses'=>'Admin\UnpublishedController@publishProduct']);

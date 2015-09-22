@@ -123,9 +123,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
                     'notifications.barcode'
                 ])
                 ->get();
-            return $query;
+            return $query ? $query : '{}';
         }
-        return false;
     }
 
     public function myAdministratorHash()

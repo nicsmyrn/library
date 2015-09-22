@@ -17,12 +17,13 @@ class BookHasCreated extends Event implements ShouldBroadcast
     public $url;
     public $userId;
     public $barcode;
+    public $unread;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($text, $time, $url, $user_id, $barcode)
+    public function __construct($text, $time, $url, $user_id, $barcode, $unread)
     {
         //
         $this->text = $text;
@@ -30,6 +31,7 @@ class BookHasCreated extends Event implements ShouldBroadcast
         $this->url = $url;
         $this->userId = $user_id;
         $this->barcode = $barcode;
+        $this->unread = $unread;
     }
 
     /**

@@ -5,30 +5,30 @@
 @endsection
 
 @section('content')
-    <div class="row">
         @if($products)
-            <table class="table table-bordered table-hover table-striped">
-                <thead>
-                    <tr>
-                        <th>Check</th>
-                        <th>Title</th>
-                        <th>Barcode</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($products as $product)
+                <table id="allUnpublished" class="display select" cellspacing="0" cellpadding="0" width="100%">
+                    <thead>
                         <tr>
-                            <td><input type="checkbox"/> </td>
-                            <td><a href="{!! route('Admin::Unpublished::confirmUnpublished', [$product->barcode]) !!}"> {!! $product->title !!}</a></td>
-                            <td>{!! $product->barcode !!}</td>
+                            <th><input name="select_all" value="1" type="checkbox"> </th>
+                            <th>Title</th>
+                            <th>Barcode</th>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach($products as $product)
+                            <tr>
+                                <td>{!! $product->id !!}</td>
+                                <td><a href="{!! route('Admin::Unpublished::confirmUnpublished', [$product->barcode]) !!}"> {!! $product->title !!}</a></td>
+                                <td>{!! $product->barcode !!}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
         @else
             <p>Δεν υπάρχουν αδημοσίευτα</p>
         @endif
+@endsection
 
-    </div>
-
+@section('scripts.footer')
+    @include('admin.products.unpublished._footer')
 @endsection

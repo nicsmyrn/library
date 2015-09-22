@@ -88,7 +88,8 @@ class BooksController extends Controller
             Carbon::now()->format('Y-m-d'),
             'http://library.gr/cPanel/unpublished/'.$request->get('barcode').'/confirm',
             $this->user->myAdministratorHash(),
-            $request->get('barcode')
+            $request->get('barcode'),
+            1
         ));
         flash()->overlay('Συγχαρητήρια', 'το βιβλίο '.$request->title.' δημιουργήθηκε με επιτυχία. Αναμένετε έγκριση από τον διαχειριστή');
         return redirect()->back();
