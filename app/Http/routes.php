@@ -58,7 +58,7 @@ Route::get('/book/categories/recursion/{cat_id}', 'BooksController@getCategories
 
 
 
-Route::get('users', ['uses'=>'UserController@index']);
+Route::get('users', ['uses'=>'Admin\UserController@index']);
 
 Route::get('date', function(){
     return Auth::user()->myAdministratorHash();
@@ -124,6 +124,8 @@ Route::group(['prefix'=> 'cPanel', 'as'=> 'Admin::'], function(){
         Route::get('{unpublished}/delete', ['as'=>'delUnProduct','uses'=>'Admin\UnpublishedController@deleteProduct']);
         Route::get('{unpublished}/publish',['as'=>'publishUnProduct','uses'=>'Admin\UnpublishedController@publishProduct']);
     });
+    Route::post('user/userActions', 'Admin\UserController@updateTableActions');
+    Route::resource('user', 'Admin\UserController');
 });
 
 //Route::get('cPanel/login', function(){

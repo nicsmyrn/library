@@ -26,11 +26,7 @@ new Vue({
             });
         },
         sendNotification: function (data) {
-            if (this.notify){
-                this.notify.push({text: data['text'], created_on: data['time'], url: data['url'], unread: data['unread'], barcode : data['barcode']})
-            }else{
-                this.$set('notify', [{text: data['text'], created_on: data['time'], url: data['url'], unread: data['unread'], barcode : data['barcode']}]);
-            }
+            this.$set('notify', [{text: data['text'], created_on: data['time'], url: data['url'], unread: data['unread'], barcode : data['barcode']}]);
         },
         addUser: function (data) {
             this.users.push(data['users'][0]);

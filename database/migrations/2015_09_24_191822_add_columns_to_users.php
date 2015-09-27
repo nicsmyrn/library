@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddHashColumnToUsersTable extends Migration
+class AddColumnsToUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddHashColumnToUsersTable extends Migration
     {
         //
         Schema::table('users', function(Blueprint $table){
-            $table->string('hash')->unique()->default(md5(uniqid()));
+            $table->string('status');
         });
     }
 
@@ -27,7 +27,7 @@ class AddHashColumnToUsersTable extends Migration
     {
         //
         Schema::table('users', function(Blueprint $table){
-            $table->dropColumn('hash');
+            $table->dropColumn('status');
         });
     }
 }

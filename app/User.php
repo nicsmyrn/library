@@ -2,12 +2,14 @@
 
 namespace App;
 
+use App\Models\Role;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use DB;
+use Auth;
 
 
 /**
@@ -126,6 +128,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
             return $query ? $query : '{}';
         }
     }
+
 
     public function myAdministratorHash()
     {

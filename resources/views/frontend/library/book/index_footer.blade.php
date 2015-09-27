@@ -84,6 +84,7 @@
                        $('body').html(request.responseText);
                    }
                 });
+//                location.reload(true);
             });
         }
     </script>

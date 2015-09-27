@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Product;
+use App\User;
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Auth;
@@ -26,8 +27,6 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot(Router $router)
     {
-        //
-
         parent::boot($router);
 
         $router->bind('book', function($barcode){
@@ -47,7 +46,9 @@ class RouteServiceProvider extends ServiceProvider
             return false;
         });
 
-
+        $router->bind('user', function($hash){
+            return User::where('hash', $hash)->first();
+        });
 
     }
 
